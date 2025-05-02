@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>English Listening Practice</title>
+  <style>
+    body { font-family: Arial; max-width: 600px; margin: 40px auto; padding: 20px; line-height: 1.6; }
+    input[type="text"] { width: 100%; padding: 10px; font-size: 16px; margin-bottom: 10px; }
+    button { padding: 10px 20px; font-size: 16px; }
+    .correct { color: green; }
+    .incorrect { color: red; }
+    #result-list { margin-top: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f0f0f0; }
+  </style>
+</head>
+<body>
+  <h1>English Listening Practice</h1>
+  <p id="status">Word 1 of 20</p>
+  <input type="text" id="input" placeholder="Type what you hear..." autofocus />
+  <button onclick="checkAnswer()">Submit</button>
+  <p id="feedback"></p>
+
+  <div id="result-list"></div>
+
+  <script>
+    const correctAnswers = [
+      "water", "garden", "insurance", "bird", "transport",
+      "glass", "park", "interview", "light", "station",
+      "city", "forest", "school", "balcony", "family",
+      "garage", "map", "museum", "river", "time"
+    ];
+
+    let current = 0;
+    let score = 0;
+    const userAnswers = [];
+
+    function checkAnswer() {
+      const input = document.getElementById("input");
+      const userInput = input.value.trim().toLowerCase();
+      const correct = correctAnswers[current];
+      userAnswers.push(userInput);
+
+      const feedback = document.getElementById("feedback");
+      if (userInput === correct) {
+        feedback.textContent = "Correct! ✓";
+        feedback.className = "correct";
+        score++;
+      } else {
+        feedback.textContent = `Wrong! Correct: ${correct}`;
+        feedback.className = "incorrect";
+      }
+
+      current++;
+      input.value = "";
+
+      if (current < correctAnswers.length) {
+        document.getElementById("status").textContent = `Word ${current + 1} of ${correctAnswers.length}`;
+      } else {
+        showResults();
+      }
+    }
+
+    function showResults() {
+      document.getElementById("status").textContent = `Completed! You scored ${score}/${correctAnswers.length}`;
+      document.getElementById("input").disabled = true;
+      document.querySelector("button").disabled = true;
+      document.getElementById("feedback").textContent = "";
+
+      let html = `<table><tr><th>#</th><th>Correct Answer</th><th>Your Answer</th></tr>`;
+      correctAnswers.forEach((word, i) => {
+        html += `<tr><td>${i + 1}</td><td>${word}</td><td>${userAnswers[i]}</td></tr>`;
+      });
+      html += `</table>`;
+      document.getElementById("result-list").innerHTML = html;
+    }
+
+    document.getElementById("input").addEventListener("keypress", function(e) {
+      if (e.key === "Enter") {
+        checkAnswer();
+      }
+    });
+  </script>
+</body>
+</html>
