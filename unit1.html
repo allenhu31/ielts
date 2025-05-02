@@ -8,7 +8,7 @@
     body { font-family: Arial; padding: 20px; }
     input { padding: 8px; width: 200px; font-size: 16px; }
     button { padding: 6px 12px; }
-    .status { margin-top: 10px; font-weight: bold; }
+    .status { margin-top: 10px; font-weight: bold; white-space: pre-line; }
     .success { color: green; }
     .error { color: red; }
     details { margin: 10px 0; }
@@ -70,20 +70,27 @@ function checkInput() {
     }
   }
 
+  let isCorrect = false;
+  let matchedWord = "";
+  let feedbackText = "";
+
   if (matchedIndex !== -1) {
-    const correct = words[matchedIndex];
-    const isCorrect = (input === correct);
+    matchedWord = words[matchedIndex];
+    isCorrect = input === matchedWord;
     userAnswers[matchedIndex] = input;
+    feedbackText = `You entered: ${input}\nMatched with Word ${matchedIndex + 1}: ${matchedWord}\nCorrect Answer: ${matchedWord}\n` + (isCorrect ? "✅ Correct!" : "❌ Incorrect!");
     fb.className = "status " + (isCorrect ? "success" : "error");
-    fb.innerText = (isCorrect ? "✅ Correct! Answer: " : "❌ Wrong! Correct Answer: ") + correct;
     currentIndex = matchedIndex + 1;
   } else {
-    const correct = words[currentIndex];
+    matchedWord = words[currentIndex];
+    isCorrect = false;
     userAnswers[currentIndex] = input;
+    feedbackText = `You entered: ${input}\nMatched with Word ${currentIndex + 1}: ${matchedWord}\nCorrect Answer: ${matchedWord}\n❌ Incorrect!`;
     fb.className = "status error";
-    fb.innerText = "❌ Wrong! Correct Answer: " + correct;
     currentIndex++;
   }
+
+  fb.innerText = feedbackText;
 
   if (currentIndex >= words.length) { finish(); return; }
   showPrompt();
