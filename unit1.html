@@ -3,97 +3,75 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Unit 1 - Listening Practice</title>
+  <title>Unit 1 Smart Listening</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
-    input { padding: 8px; font-size: 16px; }
-    button { padding: 8px 16px; margin: 10px; }
-    #result-list table { border-collapse: collapse; width: 100%; }
-    #result-list td, #result-list th { border: 1px solid #999; padding: 6px; text-align: center; }
-    .correct { background-color: #c6f6c6; }
-    .wrong { background-color: #f8c6c6; }
+    body { font-family: Arial; padding: 20px; }
+    input { padding: 8px; width: 200px; font-size: 16px; }
+    .status { margin-top: 10px; font-weight: bold; }
   </style>
 </head>
 <body>
 
-  <h1>Unit 1 Listening Practice</h1>
-  <p>Click play and type the word you hear:</p>
-<details><summary>📘 Show Word List</summary><ul><li>water</li><li>garden</li><li>insurance</li><li>bird</li><li>transport</li><li>glass</li><li>park</li><li>interview</li><li>light</li><li>station</li><li>city</li><li>forest</li><li>school</li><li>balcony</li><li>family</li><li>garage</li><li>map</li><li>museum</li><li>river</li><li>time</li><li>training</li><li>children</li><li>kitchen</li><li>magazine</li><li>wood</li><li>bone</li><li>bridge</li><li>flower</li><li>internet</li><li>library</li><li>parking</li><li>photo</li><li>supermarket</li><li>temperature</li><li>website</li><li>electricity</li><li>government</li><li>plastic</li><li>safety</li><li>stone</li><li>beach</li><li>fire</li><li>fish</li><li>fishing</li><li>helicopter</li><li>insect</li><li>music</li><li>newspaper</li><li>radio</li><li>reference</li><li>soil</li><li>wind</li><li>airport</li><li>bank</li><li>bike</li><li>business</li><li>cinema</li><li>climate</li><li>desert</li><li>energy</li><li>factory</li><li>farm</li><li>feedback</li><li>furniture</li><li>money</li><li>noise</li><li>reception</li><li>salt</li><li>theatre</li><li>boat</li><li>certificate</li><li>clean</li><li>club</li><li>colour</li><li>communication</li><li>computer</li><li>disease</li><li>environment</li><li>farming</li><li>golf</li><li>grass</li><li>gym</li><li>hospital</li><li>lake</li><li>manager</li><li>market</li><li>material</li><li>mountain</li><li>name</li><li>photograph</li><li>piano</li><li>plant</li><li>population</li><li>presentation</li><li>research</li><li>rock</li><li>sea</li><li>shower</li><li>social</li><li>sport</li><li>storm</li><li>tennis</li><li>tutor</li><li>weight</li><li>age</li><li>animal</li><li>bicycle</li><li>camera</li><li>chemical</li><li>cleaning</li><li>coffee</li><li>confidence</li><li>egg</li><li>entertainment</li><li>film</li><li>food</li><li>helmet</li><li>hotel</li><li>india</li><li>nut</li><li>phone</li><li>report</li><li>restaurant</li><li>sailing</li><li>security</li><li>size</li><li>skill</li><li>speed</li><li>studio</li><li>tax</li><li>technology</li><li>traditional</li><li>train</li><li>video</li><li>village</li><li>weather</li><li>behaviour</li><li>cake</li><li>car</li><li>chocolate</li><li>competition</li><li>cooking</li><li>culture</li><li>decoration</li><li>distance</li><li>equipment</li><li>flat</li><li>flexible</li><li>fridge</li><li>gas</li><li>genetic</li><li>gift</li><li>group</li><li>language</li><li>locker</li><li>microwave</li><li>north</li><li>oil</li><li>passport</li><li>picture</li><li>reading</li><li>resource</li><li>road</li><li>student</li><li>swimming</li><li>teenager</li><li>traffic</li><li>academic</li><li>agriculture</li><li>apartment</li><li>back</li><li>basement</li><li>book</li><li>booklet</li><li>box</li><li>breakfast</li><li>bus</li><li>cheese</li><li>cheque</li><li>clay</li><li>clothes</li><li>coast</li><li>concentration</li><li>corn</li><li>cost</li><li>deposit</li><li>direction</li><li>discount</li><li>dry</li><li>exercise</li><li>fear</li><li>friend</li><li>guide</li><li>health</li><li>history</li><li>housing</li><li>hunting</li><li>image</li><li>japanese</li><li>job</li><li>lunch</li><li>meal</li><li>method</li><li>mirror</li><li>negative</li><li>nutrition</li><li>observation</li><li>open</li><li>organic</li><li>painting</li><li>parent</li><li>permit</li><li>pool</li><li>public</li><li>quality</li><li>question</li><li>rainfall</li><li>record</li><li>relationship</li><li>sale</li><li>sample</li><li>science</li><li>seafood</li><li>seminar</li><li>silver</li><li>spanish</li><li>standard</li><li>store</li><li>street</li><li>sugar</li><li>summer</li><li>sun</li><li>survey</li><li>team</li><li>tent</li><li>ticket</li><li>tool</li><li>tree</li><li>university</li><li>view</li><li>weekend</li><li>wheelchair</li><li>window</li><li>winter</li><li>women</li><li>action</li><li>adult</li><li>advertisement</li><li>alarm</li><li>bacteria</li><li>bag</li><li>band</li><li>bathroom</li><li>brick</li><li>building</li><li>camel</li><li>cash</li><li>castle</li><li>cave</li><li>central</li><li>coach</li><li>college</li><li>commercial</li><li>conference</li></ul></details>
-  <audio controls src="Unit1.mp3"></audio><br>
-  <input type="text" id="input" autofocus />
-  <button onclick="checkAnswer()">Submit</button>
-  <a href="index.html">🏠 Home</a>
-  <button onclick="showMistakes()">📝 View Mistakes</button>
+<h1>Unit 1 Smart Listening Practice</h1>
+<audio controls src="Unit1.mp3"></audio>
 
-  <p id="status"></p>
-  <p id="feedback"></p>
+<p><b id="prompt">Word 1 of 5</b></p>
+<input id="answer" placeholder="Type your answer" autofocus />
+<p class="status" id="feedback"></p>
 
-  <div id="result-list"></div>
+<script>
+const words = ["water", "garden", "insurance", "bird", "transport", "glass", "park", "interview", "light", "station", "city", "forest", "school", "balcony", "family", "garage", "map", "museum", "river", "time", "training", "children", "kitchen", "magazine", "wood", "bone", "bridge", "flower", "internet", "library", "parking", "photo", "supermarket", "temperature", "website", "electricity", "government", "plastic", "safety", "stone", "beach", "fire", "fish", "fishing", "helicopter", "insect", "music", "newspaper", "radio", "reference", "soil", "wind", "airport", "bank", "bike", "business", "cinema", "climate", "desert", "energy", "factory", "farm", "feedback", "furniture", "money", "noise", "reception", "salt", "theatre", "boat", "certificate", "clean", "club", "colour", "communication", "computer", "disease", "environment", "farming", "golf", "grass", "gym", "hospital", "lake", "manager", "market", "material", "mountain", "name", "photograph", "piano", "plant", "population", "presentation", "research", "rock", "sea", "shower", "social", "sport", "storm", "tennis", "tutor", "weight", "age", "animal", "bicycle", "camera", "chemical", "cleaning", "coffee", "confidence", "egg", "entertainment", "film", "food", "helmet", "hotel", "india", "nut", "phone", "report", "restaurant", "sailing", "security", "size", "skill", "speed", "studio", "tax", "technology", "traditional", "train", "video", "village", "weather", "behaviour", "cake", "car", "chocolate", "competition", "cooking", "culture", "decoration", "distance", "equipment", "flat", "flexible", "fridge", "gas", "genetic", "gift", "group", "language", "locker", "microwave", "north", "oil", "passport", "picture", "reading", "resource", "road", "student", "swimming", "teenager", "traffic", "academic", "agriculture", "apartment", "back", "basement", "book", "booklet", "box", "breakfast", "bus", "cheese", "cheque", "clay", "clothes", "coast", "concentration", "corn", "cost", "deposit", "direction", "discount", "dry", "exercise", "fear", "friend", "guide", "health", "history", "housing", "hunting", "image", "japanese", "job", "lunch", "meal", "method", "mirror", "negative", "nutrition", "observation", "open", "organic", "painting", "parent", "permit", "pool", "public", "quality", "question", "rainfall", "record", "relationship", "sale", "sample", "science", "seafood", "seminar", "silver", "spanish", "standard", "store", "street", "sugar", "summer", "sun", "survey", "team", "tent", "ticket", "tool", "tree", "university", "view", "weekend", "wheelchair", "window", "winter", "women", "action", "adult", "advertisement", "alarm", "bacteria", "bag", "band", "bathroom", "brick", "building", "camel", "cash", "castle", "cave", "central", "coach", "college", "commercial", "conference"];
+let currentIndex = 0;
+let userAnswers = new Array(words.length).fill("");
+const lookahead = 3;
 
-  <script>
-    const correctAnswers = ['water', 'garden', 'insurance', 'bird', 'transport', 'glass', 'park', 'interview', 'light', 'station', 'city', 'forest', 'school', 'balcony', 'family', 'garage', 'map', 'museum', 'river', 'time', 'training', 'children', 'kitchen', 'magazine', 'wood', 'bone', 'bridge', 'flower', 'internet', 'library', 'parking', 'photo', 'supermarket', 'temperature', 'website', 'electricity', 'government', 'plastic', 'safety', 'stone', 'beach', 'fire', 'fish', 'fishing', 'helicopter', 'insect', 'music', 'newspaper', 'radio', 'reference', 'soil', 'wind', 'airport', 'bank', 'bike', 'business', 'cinema', 'climate', 'desert', 'energy', 'factory', 'farm', 'feedback', 'furniture', 'money', 'noise', 'reception', 'salt', 'theatre', 'boat', 'certificate', 'clean', 'club', 'colour', 'communication', 'computer', 'disease', 'environment', 'farming', 'golf', 'grass', 'gym', 'hospital', 'lake', 'manager', 'market', 'material', 'mountain', 'name', 'photograph', 'piano', 'plant', 'population', 'presentation', 'research', 'rock', 'sea', 'shower', 'social', 'sport', 'storm', 'tennis', 'tutor', 'weight', 'age', 'animal', 'bicycle', 'camera', 'chemical', 'cleaning', 'coffee', 'confidence', 'egg', 'entertainment', 'film', 'food', 'helmet', 'hotel', 'india', 'nut', 'phone', 'report', 'restaurant', 'sailing', 'security', 'size', 'skill', 'speed', 'studio', 'tax', 'technology', 'traditional', 'train', 'video', 'village', 'weather', 'behaviour', 'cake', 'car', 'chocolate', 'competition', 'cooking', 'culture', 'decoration', 'distance', 'equipment', 'flat', 'flexible', 'fridge', 'gas', 'genetic', 'gift', 'group', 'language', 'locker', 'microwave', 'north', 'oil', 'passport', 'picture', 'reading', 'resource', 'road', 'student', 'swimming', 'teenager', 'traffic', 'academic', 'agriculture', 'apartment', 'back', 'basement', 'book', 'booklet', 'box', 'breakfast', 'bus', 'cheese', 'cheque', 'clay', 'clothes', 'coast', 'concentration', 'corn', 'cost', 'deposit', 'direction', 'discount', 'dry', 'exercise', 'fear', 'friend', 'guide', 'health', 'history', 'housing', 'hunting', 'image', 'japanese', 'job', 'lunch', 'meal', 'method', 'mirror', 'negative', 'nutrition', 'observation', 'open', 'organic', 'painting', 'parent', 'permit', 'pool', 'public', 'quality', 'question', 'rainfall', 'record', 'relationship', 'sale', 'sample', 'science', 'seafood', 'seminar', 'silver', 'spanish', 'standard', 'store', 'street', 'sugar', 'summer', 'sun', 'survey', 'team', 'tent', 'ticket', 'tool', 'tree', 'university', 'view', 'weekend', 'wheelchair', 'window', 'winter', 'women', 'action', 'adult', 'advertisement', 'alarm', 'bacteria', 'bag', 'band', 'bathroom', 'brick', 'building', 'camel', 'cash', 'castle', 'cave', 'central', 'coach', 'college', 'commercial', 'conference'];
-    let currentIndex = 0;
-    let score = 0;
-    const userAnswers = [];
+function showPrompt() {
+  document.getElementById("prompt").textContent = "Word " + (currentIndex + 1) + " of " + words.length;
+  document.getElementById("answer").value = "";
+  document.getElementById("answer").focus();
+  document.getElementById("feedback").textContent = "";
+}
 
-    function checkAnswer() {
-      const input = document.getElementById("input");
-      const answer = input.value.trim().toLowerCase();
-      if (!answer) return;
+function checkInput() {
+  const input = document.getElementById("answer").value.trim().toLowerCase();
+  if (!input) return;
 
-      const correct = correctAnswers[currentIndex];
-      userAnswers.push(answer);
-      if (answer === correct) {
-        score++;
-        document.getElementById("feedback").textContent = `✅ Correct! Answer: ${correct}`;
-      } else {
-        document.getElementById("feedback").textContent = `❌ Wrong! Correct Answer: ${correct}`;
-        saveMistake(correct, answer);
-      }
-
-      input.value = "";
-      currentIndex++;
-      if (currentIndex >= correctAnswers.length) {
-        showResults();
-      }
-    }
-
-    function showResults() {
-      document.getElementById("status").textContent =
-        `✅ Completed! You scored ${score}/${correctAnswers.length}`;
-      document.getElementById("input").disabled = true;
-      document.querySelector("button").disabled = true;
-      document.getElementById("feedback").textContent = "";
-
-      let html = `<table><tr><th>#</th><th>Correct</th><th>Your Answer</th></tr>`;
-      correctAnswers.forEach((word, i) => {
-        const user = userAnswers[i];
-        const cls = word === user ? "correct" : "wrong";
-        html += `<tr class="${cls}"><td>${i + 1}</td><td>${word}</td><td>${user}</td></tr>`;
-      });
-      html += "</table>";
-      document.getElementById("result-list").innerHTML = html;
-    }
-
-    function restart() { location.reload(); }
-    function saveMistake(correct, user) {
-      const record = JSON.parse(localStorage.getItem("mistakes_unit1") || "[]");
-      record.push({ correct, user });
-      localStorage.setItem("mistakes_unit1", JSON.stringify(record));
-    }
-    function showMistakes() {
-      const record = JSON.parse(localStorage.getItem("mistakes_unit1") || "[]");
-      if (record.length === 0) {
-        alert("🎉 No mistakes recorded yet!");
+  for (let offset = 0; offset <= lookahead && (currentIndex + offset) < words.length; offset++) {
+    if (words[currentIndex + offset] === input) {
+      userAnswers[currentIndex + offset] = input;
+      document.getElementById("feedback").textContent =
+        "✅ Matched with word " + (currentIndex + offset + 1) + ": " + words[currentIndex + offset];
+      currentIndex = currentIndex + offset + 1;
+      if (currentIndex >= words.length) {
+        finish();
         return;
       }
-      const lines = record.map((item, i) => `${i + 1}. Correct: ${item.correct} | Your Answer: ${item.user}`);
-      alert("📝 Mistake History:\n\n" + lines.join("\n"));
+      showPrompt();
+      return;
     }
+  }
 
-    document.getElementById("input").addEventListener("keypress", function (e) {
-      if (e.key === "Enter") checkAnswer();
-    });
-  </script>
+  document.getElementById("feedback").textContent = "❌ Incorrect. No match found in next " + lookahead + " words.";
+}
+
+function finish() {
+  let correct = 0;
+  for (let i = 0; i < words.length; i++) {
+    if (userAnswers[i] === words[i]) correct++;
+  }
+  let msg = `🎉 Done! Score: ${correct} / ${words.length}\n\n`;
+  for (let i = 0; i < words.length; i++) {
+    msg += `${i+1}. Correct: ${words[i]} | Your: ${userAnswers[i] || "(empty)"}\n`;
+  }
+  alert(msg);
+}
+
+document.getElementById("answer").addEventListener("keypress", function(e) {
+  if (e.key === "Enter") checkInput();
+});
+
+showPrompt();
+</script>
+
 </body>
 </html>
