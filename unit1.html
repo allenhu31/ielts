@@ -8,7 +8,7 @@
     body { font-family: Arial; padding: 20px; }
     input { padding: 8px; width: 200px; font-size: 16px; }
     button { padding: 6px 12px; }
-    .status { margin-top: 10px; font-weight: bold; }
+    .status { margin-top: 10px; font-weight: bold; white-space: pre-line; }
     details { margin: 10px 0; }
   </style>
 </head>
@@ -35,16 +35,6 @@ let currentIndex = 0;
 let userAnswers = new Array(words.length).fill("");
 const lookahead = 3;
 
-// 词距匹配（相似度）
-function similarity(a, b) {
-  let matches = 0;
-  const minLen = Math.min(a.length, b.length);
-  for (let i = 0; i < minLen; i++) {
-    if (a[i] === b[i]) matches++;
-  }
-  return matches / Math.max(a.length, b.length);
-}
-
 function showPrompt() {
   document.getElementById("prompt").textContent = "Word " + (currentIndex + 1) + " of " + words.length;
   document.getElementById("answer").value = "";
@@ -52,19 +42,23 @@ function showPrompt() {
   document.getElementById("feedback").textContent = "";
 }
 
+function similarity(a, b) {
+  let matches = 0;
+  const len = Math.min(a.length, b.length);
+  for (let i = 0; i < len; i++) {
+    if (a[i] === b[i]) matches++;
+  }
+  return matches / Math.max(a.length, b.length);
+}
 
 function checkInput() {
   const input = document.getElementById("answer").value.trim().toLowerCase();
   if (!input) return;
+
   let matchedIndex = -1;
   for (let offset = 0; offset <= lookahead && (currentIndex + offset) < words.length; offset++) {
     const target = words[currentIndex + offset];
-    let sim = 0;
-    const len = Math.min(input.length, target.length);
-    for (let i = 0; i < len; i++) {
-      if (input[i] === target[i]) sim++;
-    }
-    if ((sim / Math.max(input.length, target.length)) > 0.7) {
+    if (similarity(input, target) > 0.7) {
       matchedIndex = currentIndex + offset;
       break;
     }
@@ -72,7 +66,7 @@ function checkInput() {
 
   if (matchedIndex !== -1) {
     const correct = words[matchedIndex];
-    const isCorrect = input === correct;
+    const isCorrect = (input === correct);
     userAnswers[matchedIndex] = input;
     document.getElementById("feedback").textContent =
       "You entered: " + input +
@@ -91,33 +85,6 @@ function checkInput() {
     currentIndex++;
   }
 
-  if (currentIndex >= words.length) {{ finish(); return; }}
-  showPrompt();
-}
-  const input = document.getElementById("answer").value.trim().toLowerCase();
-  if (!input) return;
-
-  for (let offset = 0; offset <= lookahead && (currentIndex + offset) < words.length; offset++) {
-    const target = words[currentIndex + offset];
-    const sim = similarity(input, target);
-
-    if (sim > 0.7) {  // 模糊匹配成功
-      userAnswers[currentIndex + offset] = input;
-      let correct = (input === target);
-      document.getElementById("feedback").textContent =
-        (correct ? "✅" : "❌") + " Word " + (currentIndex + offset + 1) + ": " + target;
-      currentIndex = currentIndex + offset + 1;
-      if (currentIndex >= words.length) { finish(); return; }
-      showPrompt();
-      return;
-    }
-  }
-
-  // 未命中模糊位置，记录当前题错误
-  userAnswers[currentIndex] = input;
-  document.getElementById("feedback").textContent =
-    "❌ Word " + (currentIndex + 1) + ": " + words[currentIndex];
-  currentIndex++;
   if (currentIndex >= words.length) { finish(); return; }
   showPrompt();
 }
@@ -127,14 +94,14 @@ function finish() {
   for (let i = 0; i < words.length; i++) {
     if (userAnswers[i] === words[i]) correct++;
   }
-  alert(`🎉 Done! Score: ${correct} / ${words.length}`);
+  alert("🎉 Done! Score: " + correct + "/" + words.length);
 }
 
 function showMistakes() {
   let text = "Mistakes:\n\n";
   for (let i = 0; i < words.length; i++) {
     if (userAnswers[i] && userAnswers[i] !== words[i]) {
-      text += `${i+1}. Correct: ${words[i]} | Your: ${userAnswers[i]}\n`;
+      text += (i+1) + ". Correct: " + words[i] + " | Your: " + userAnswers[i] + "\n";
     }
   }
   alert(text || "No mistakes 🎉");
