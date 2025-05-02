@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Unit 2 - Listening Practice</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
+    input { padding: 8px; font-size: 16px; }
+    button { padding: 8px 16px; margin: 10px; }
+    #result-list table { border-collapse: collapse; width: 100%; }
+    #result-list td, #result-list th { border: 1px solid #999; padding: 6px; text-align: center; }
+    .correct { background-color: #c6f6c6; }
+    .wrong { background-color: #f8c6c6; }
+  </style>
+</head>
+<body>
+
+  <h1>Unit 2 Listening Practice</h1>
+  <p>Click play and type the word you hear:</p>
+  <audio controls src="Unit2.mp3"></audio><br>
+  <input type="text" id="input" autofocus />
+  <button onclick="checkAnswer()">Submit</button>
+  <button onclick="restart()">🏠 Home</button>
+  <button onclick="showMistakes()">📝 View Mistakes</button>
+
+  <p id="status"></p>
+  <p id="feedback"></p>
+
+  <div id="result-list"></div>
+
+  <script>
+    const correctAnswers = ['table', 'pen', 'eraser', 'chair', 'window', 'blackboard', 'clock', 'floor', 'wall', 'door', 'board', 'lamp', 'shelf', 'mirror', 'curtain', 'carpet', 'bin', 'cupboard', 'ceiling', 'switch'];
+    let currentIndex = 0;
+    let score = 0;
+    const userAnswers = [];
+
+    function checkAnswer() {
+      const input = document.getElementById("input");
+      const answer = input.value.trim().toLowerCase();
+      if (!answer) return;
+
+      const correct = correctAnswers[currentIndex];
+      userAnswers.push(answer);
+      if (answer === correct) {
+        score++;
+        document.getElementById("feedback").textContent = "✅ Correct!";
+      } else {
+        document.getElementById("feedback").textContent = `❌ Wrong! The correct word was: ${correct}`;
+        saveMistake(correct, answer);
+      }
+
+      input.value = "";
+      currentIndex++;
+      if (currentIndex >= correctAnswers.length) {
+        showResults();
+      }
+    }
+
+    function showResults() {
+      document.getElementById("status").textContent =
+        `✅ Completed! You scored ${score}/${correctAnswers.length}`;
+      document.getElementById("input").disabled = true;
+      document.querySelector("button").disabled = true;
+      document.getElementById("feedback").textContent = "";
+
+      let html = `<table><tr><th>#</th><th>Correct</th><th>Your Answer</th></tr>`;
+      correctAnswers.forEach((word, i) => {
+        const user = userAnswers[i];
+        const cls = word === user ? "correct" : "wrong";
+        html += `<tr class="${cls}"><td>${i + 1}</td><td>${word}</td><td>${user}</td></tr>`;
+      });
+      html += "</table>";
+      document.getElementById("result-list").innerHTML = html;
+    }
+
+    function restart() { location.reload(); }
+    function saveMistake(correct, user) {
+      const record = JSON.parse(localStorage.getItem("mistakes_unit2") || "[]");
+      record.push({ correct, user });
+      localStorage.setItem("mistakes_unit2", JSON.stringify(record));
+    }
+    function showMistakes() {
+      const record = JSON.parse(localStorage.getItem("mistakes_unit2") || "[]");
+      if (record.length === 0) {
+        alert("🎉 No mistakes recorded yet!");
+        return;
+      }
+      const lines = record.map((item, i) => `${i + 1}. Correct: ${item.correct} | Your Answer: ${item.user}`);
+      alert("📝 Mistake History:\n\n" + lines.join("\n"));
+    }
+
+    document.getElementById("input").addEventListener("keypress", function (e) {
+      if (e.key === "Enter") checkAnswer();
+    });
+  </script>
+</body>
+</html>
