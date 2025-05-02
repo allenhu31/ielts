@@ -49,7 +49,7 @@ function showPrompt() {
   document.getElementById("prompt").textContent = "Word " + (currentIndex + 1) + " of " + words.length;
   document.getElementById("answer").value = "";
   document.getElementById("answer").focus();
-  document.getElementById("feedback").textContent = "❌ Word " + (currentIndex + 1) + ": " + words[currentIndex] + " | Correct Answer: " + words[currentIndex];
+  document.getElementById("feedback").textContent = "You entered: " + input + "\nMatched with Word " + (currentIndex + offset + 1) + ": " + target + "\nCorrect Answer: " + target + "\n" + (input === target ? "✅ Correct!" : "❌ Incorrect!");
 // "";
 }
 
@@ -64,9 +64,9 @@ function checkInput() {
     if (sim > 0.7) {  // 模糊匹配成功
       userAnswers[currentIndex + offset] = input;
       let correct = (input === target);
-      document.getElementById("feedback").textContent = "❌ Word " + (currentIndex + 1) + ": " + words[currentIndex] + " | Correct Answer: " + words[currentIndex];
+      document.getElementById("feedback").textContent = "You entered: " + input + "\nMatched with Word " + (currentIndex + offset + 1) + ": " + target + "\nCorrect Answer: " + target + "\n" + (input === target ? "✅ Correct!" : "❌ Incorrect!");
 //
-        (correct ? "✅" : "❌") + " Word " + (currentIndex + offset + 1) + ": " + target + " | Correct Answer: " + target + (currentIndex + offset + 1) + ": " + target;
+        (correct ? "✅" : "❌") + " Word " + (currentIndex + offset + 1) + ": " + target;
       currentIndex = currentIndex + offset + 1;
       if (currentIndex >= words.length) { finish(); return; }
       showPrompt();
@@ -76,7 +76,7 @@ function checkInput() {
 
   // 未命中模糊位置，记录当前题错误
   userAnswers[currentIndex] = input;
-  document.getElementById("feedback").textContent = "❌ Word " + (currentIndex + 1) + ": " + words[currentIndex] + " | Correct Answer: " + words[currentIndex];
+  document.getElementById("feedback").textContent = "You entered: " + input + "\nMatched with Word " + (currentIndex + offset + 1) + ": " + target + "\nCorrect Answer: " + target + "\n" + (input === target ? "✅ Correct!" : "❌ Incorrect!");
 //
     "❌ Word " + (currentIndex + 1) + ": " + words[currentIndex];
   currentIndex++;
