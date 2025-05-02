@@ -45,9 +45,9 @@
       userAnswers.push(answer);
       if (answer === correct) {
         score++;
-        document.getElementById("feedback").textContent = "✅ Correct!";
+        document.getElementById("feedback").textContent = `✅ Correct! Answer: ${correct}`;
       } else {
-        document.getElementById("feedback").textContent = `❌ Wrong! The correct word was: ${correct}`;
+        document.getElementById("feedback").textContent = `❌ Wrong! Correct Answer: ${correct}`;
         saveMistake(correct, answer);
       }
 
