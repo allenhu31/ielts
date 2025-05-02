@@ -52,7 +52,48 @@ function showPrompt() {
   document.getElementById("feedback").textContent = "";
 }
 
+
 function checkInput() {
+  const input = document.getElementById("answer").value.trim().toLowerCase();
+  if (!input) return;
+  let matchedIndex = -1;
+  for (let offset = 0; offset <= lookahead && (currentIndex + offset) < words.length; offset++) {
+    const target = words[currentIndex + offset];
+    let sim = 0;
+    const len = Math.min(input.length, target.length);
+    for (let i = 0; i < len; i++) {
+      if (input[i] === target[i]) sim++;
+    }
+    if ((sim / Math.max(input.length, target.length)) > 0.7) {
+      matchedIndex = currentIndex + offset;
+      break;
+    }
+  }
+
+  if (matchedIndex !== -1) {
+    const correct = words[matchedIndex];
+    const isCorrect = input === correct;
+    userAnswers[matchedIndex] = input;
+    document.getElementById("feedback").textContent =
+      "You entered: " + input +
+      "\nMatched with Word " + (matchedIndex + 1) + ": " + correct +
+      "\nCorrect Answer: " + correct +
+      "\n" + (isCorrect ? "✅ Correct!" : "❌ Incorrect!");
+    currentIndex = matchedIndex + 1;
+  } else {
+    const correct = words[currentIndex];
+    userAnswers[currentIndex] = input;
+    document.getElementById("feedback").textContent =
+      "You entered: " + input +
+      "\nMatched with Word " + (currentIndex + 1) + ": " + correct +
+      "\nCorrect Answer: " + correct +
+      "\n❌ Incorrect!";
+    currentIndex++;
+  }
+
+  if (currentIndex >= words.length) {{ finish(); return; }}
+  showPrompt();
+}
   const input = document.getElementById("answer").value.trim().toLowerCase();
   if (!input) return;
 
