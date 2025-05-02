@@ -49,14 +49,15 @@ function showPrompt() {
   document.getElementById("prompt").textContent = "Word " + (currentIndex + 1) + " of " + words.length;
   document.getElementById("answer").value = "";
   document.getElementById("answer").focus();
-  document.getElementById("feedback").textContent = "You entered: " + input + "\nMatched with Word " + (currentIndex + offset + 1) + ": " + target + "\nCorrect Answer: " + target + "\n" + (input === target ? "✅ Correct!" : "❌ Incorrect!");
-// "";
+  document.getElementById("feedback").textContent = "";
 }
 
 function checkInput() {
   const input = document.getElementById("answer").value.trim().toLowerCase();
   if (!input) return;
 
+  
+  let matched = false;
   for (let offset = 0; offset <= lookahead && (currentIndex + offset) < words.length; offset++) {
     const target = words[currentIndex + offset];
     const sim = similarity(input, target);
@@ -64,10 +65,10 @@ function checkInput() {
     if (sim > 0.7) {  // 模糊匹配成功
       userAnswers[currentIndex + offset] = input;
       let correct = (input === target);
-      document.getElementById("feedback").textContent = "You entered: " + input + "\nMatched with Word " + (currentIndex + offset + 1) + ": " + target + "\nCorrect Answer: " + target + "\n" + (input === target ? "✅ Correct!" : "❌ Incorrect!");
-//
+      document.getElementById("feedback").textContent =
         (correct ? "✅" : "❌") + " Word " + (currentIndex + offset + 1) + ": " + target;
       currentIndex = currentIndex + offset + 1;
+      matched = true;
       if (currentIndex >= words.length) { finish(); return; }
       showPrompt();
       return;
@@ -76,8 +77,7 @@ function checkInput() {
 
   // 未命中模糊位置，记录当前题错误
   userAnswers[currentIndex] = input;
-  document.getElementById("feedback").textContent = "You entered: " + input + "\nMatched with Word " + (currentIndex + offset + 1) + ": " + target + "\nCorrect Answer: " + target + "\n" + (input === target ? "✅ Correct!" : "❌ Incorrect!");
-//
+  document.getElementById("feedback").textContent =
     "❌ Word " + (currentIndex + 1) + ": " + words[currentIndex];
   currentIndex++;
   if (currentIndex >= words.length) { finish(); return; }
