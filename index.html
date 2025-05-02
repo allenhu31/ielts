@@ -3,63 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>English Listening Practice</title>
+  <title>Listening Practice</title>
   <style>
-    body { font-family: Arial; max-width: 600px; margin: 40px auto; padding: 20px; line-height: 1.6; }
-    input[type="text"] { width: 100%; padding: 10px; font-size: 16px; margin-bottom: 10px; }
-    button { padding: 10px 20px; font-size: 16px; }
+    body { font-family: Arial, sans-serif; background: #f0f8ff; text-align: center; padding: 2em; }
+    h1 { color: #333; }
+    #container { max-width: 600px; margin: auto; background: white; padding: 2em; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    input[type="text"] { padding: 0.5em; width: 70%; font-size: 1em; }
+    button { padding: 0.5em 1em; font-size: 1em; margin-left: 10px; }
+    #result-list { margin-top: 2em; text-align: left; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 0.5em; border: 1px solid #ccc; }
+    .home-button { position: absolute; top: 20px; left: 20px; }
     .correct { color: green; }
     .incorrect { color: red; }
-    #result-list { margin-top: 20px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-    th { background-color: #f0f0f0; }
   </style>
 </head>
 <body>
-  <h1>English Listening Practice</h1>
-  <p id="status">Word 1 of 20</p>
-  <input type="text" id="input" placeholder="Type what you hear..." autofocus />
-  <button onclick="checkAnswer()">Submit</button>
-  <p id="feedback"></p>
-
-  <div id="result-list"></div>
+  <a class="home-button" href="index.html">Home</a>
+  <div id="container">
+    <h1>Listening Practice</h1>
+    <p id="status">Type the word you hear:</p>
+    <input type="text" id="input" autofocus />
+    <button onclick="checkAnswer()">Submit</button>
+    <div id="feedback"></div>
+    <div id="result-list"></div>
+  </div>
 
   <script>
-    const correctAnswers = [
-      "water", "garden", "insurance", "bird", "transport",
-      "glass", "park", "interview", "light", "station",
-      "city", "forest", "school", "balcony", "family",
-      "garage", "map", "museum", "river", "time"
-    ];
-
-    let current = 0;
+    const correctAnswers = ["water", "garden", "insurance", "bird", "transport", "glass", "park", "interview", "light", "station", "city", "forest", "school", "balcony", "family", "garage", "map", "museum", "river", "time"];
+    let currentIndex = 0;
     let score = 0;
-    const userAnswers = [];
+    let userAnswers = [];
+    let wrongLog = [];
 
     function checkAnswer() {
       const input = document.getElementById("input");
-      const userInput = input.value.trim().toLowerCase();
-      const correct = correctAnswers[current];
-      userAnswers.push(userInput);
+      const answer = input.value.trim().toLowerCase();
+      const correct = correctAnswers[currentIndex];
+      userAnswers.push(answer);
 
-      const feedback = document.getElementById("feedback");
-      if (userInput === correct) {
-        feedback.textContent = "Correct! ✓";
-        feedback.className = "correct";
+      if (answer === correct) {
         score++;
+        document.getElementById("feedback").textContent = "Correct!";
+        document.getElementById("feedback").className = "correct";
       } else {
-        feedback.textContent = `Wrong! Correct: ${correct}`;
-        feedback.className = "incorrect";
+        document.getElementById("feedback").textContent = `Incorrect! Correct was: ${correct}`;
+        document.getElementById("feedback").className = "incorrect";
+        wrongLog.push({ word: correct, user: answer });
       }
 
-      current++;
       input.value = "";
+      currentIndex++;
 
-      if (current < correctAnswers.length) {
-        document.getElementById("status").textContent = `Word ${current + 1} of ${correctAnswers.length}`;
-      } else {
+      if (currentIndex >= correctAnswers.length) {
         showResults();
+      } else {
+        document.getElementById("status").textContent = `Word ${currentIndex + 1} of ${correctAnswers.length}`;
       }
     }
 
@@ -69,18 +68,25 @@
       document.querySelector("button").disabled = true;
       document.getElementById("feedback").textContent = "";
 
-      let html = `<table><tr><th>#</th><th>Correct Answer</th><th>Your Answer</th></tr>`;
+      let html = `<h3>Result Table</h3><table><tr><th>#</th><th>Correct Answer</th><th>Your Answer</th></tr>`;
       correctAnswers.forEach((word, i) => {
         html += `<tr><td>${i + 1}</td><td>${word}</td><td>${userAnswers[i]}</td></tr>`;
       });
       html += `</table>`;
+
+      if (wrongLog.length > 0) {
+        html += `<h3>Wrong Log</h3><ul>`;
+        wrongLog.forEach(item => {
+          html += `<li><strong>${item.word}</strong> → you typed: <em>${item.user}</em></li>`;
+        });
+        html += `</ul>`;
+      }
+
       document.getElementById("result-list").innerHTML = html;
     }
 
     document.getElementById("input").addEventListener("keypress", function(e) {
-      if (e.key === "Enter") {
-        checkAnswer();
-      }
+      if (e.key === "Enter") checkAnswer();
     });
   </script>
 </body>
