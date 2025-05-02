@@ -35,6 +35,16 @@ let currentIndex = 0;
 let userAnswers = new Array(words.length).fill("");
 const lookahead = 3;
 
+// 词距匹配（相似度）
+function similarity(a, b) {
+  let matches = 0;
+  const minLen = Math.min(a.length, b.length);
+  for (let i = 0; i < minLen; i++) {
+    if (a[i] === b[i]) matches++;
+  }
+  return matches / Math.max(a.length, b.length);
+}
+
 function showPrompt() {
   document.getElementById("prompt").textContent = "Word " + (currentIndex + 1) + " of " + words.length;
   document.getElementById("answer").value = "";
@@ -47,10 +57,14 @@ function checkInput() {
   if (!input) return;
 
   for (let offset = 0; offset <= lookahead && (currentIndex + offset) < words.length; offset++) {
-    if (words[currentIndex + offset] === input) {
+    const target = words[currentIndex + offset];
+    const sim = similarity(input, target);
+
+    if (sim > 0.7) {  // 模糊匹配成功
       userAnswers[currentIndex + offset] = input;
+      let correct = (input === target);
       document.getElementById("feedback").textContent =
-        "✅ Matched word " + (currentIndex + offset + 1) + ": " + words[currentIndex + offset];
+        (correct ? "✅" : "❌") + " Word " + (currentIndex + offset + 1) + ": " + target;
       currentIndex = currentIndex + offset + 1;
       if (currentIndex >= words.length) { finish(); return; }
       showPrompt();
@@ -58,9 +72,10 @@ function checkInput() {
     }
   }
 
-  userAnswers[currentIndex] = input;  // 记录错误答案
+  // 未命中模糊位置，记录当前题错误
+  userAnswers[currentIndex] = input;
   document.getElementById("feedback").textContent =
-    "❌ No match. Expected: " + words[currentIndex];
+    "❌ Word " + (currentIndex + 1) + ": " + words[currentIndex];
   currentIndex++;
   if (currentIndex >= words.length) { finish(); return; }
   showPrompt();
