@@ -1,93 +1,107 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Listening Practice</title>
+  <meta charset="UTF-8">
+  <title>English Listening Practice</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #f0f8ff; text-align: center; padding: 2em; }
-    h1 { color: #333; }
-    #container { max-width: 600px; margin: auto; background: white; padding: 2em; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-    input[type="text"] { padding: 0.5em; width: 70%; font-size: 1em; }
-    button { padding: 0.5em 1em; font-size: 1em; margin-left: 10px; }
-    #result-list { margin-top: 2em; text-align: left; }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { padding: 0.5em; border: 1px solid #ccc; }
-    .home-button { position: absolute; top: 20px; left: 20px; }
-    .correct { color: green; }
-    .incorrect { color: red; }
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
+    input { padding: 8px; font-size: 16px; }
+    button { padding: 8px 16px; margin: 10px; }
+    #result-list table { border-collapse: collapse; width: 100%; }
+    #result-list td, #result-list th { border: 1px solid #999; padding: 6px; text-align: center; }
+    .correct { background-color: #c6f6c6; }
+    .wrong { background-color: #f8c6c6; }
   </style>
 </head>
 <body>
-  <a class="home-button" href="index.html">Home</a>
-  <div id="container">
-    <h1>Listening Practice</h1>
-    <p id="status">Type the word you hear:</p>
-    <input type="text" id="input" autofocus />
-    <button onclick="checkAnswer()">Submit</button>
-    <div id="feedback"></div>
-    <div id="result-list"></div>
-  </div>
+
+  <h1>English Listening Practice</h1>
+  <p>Type the correct word you hear:</p>
+  <input type="text" id="input" autofocus />
+  <button onclick="checkAnswer()">Submit</button>
+  <button onclick="restart()">🏠 Home</button>
+  <button onclick="showMistakes()">📝 View Mistakes</button>
+
+  <p id="status"></p>
+  <p id="feedback"></p>
+
+  <div id="result-list"></div>
 
   <script>
-    const correctAnswers = ["water", "garden", "insurance", "bird", "transport", "glass", "park", "interview", "light", "station", "city", "forest", "school", "balcony", "family", "garage", "map", "museum", "river", "time"];
+    const correctAnswers = [
+      "water", "garden", "insurance", "bird", "transport",
+      "glass", "park", "interview", "light", "station",
+      "city", "forest", "school", "balcony", "family",
+      "garage", "map", "museum", "river", "time"
+    ];
     let currentIndex = 0;
     let score = 0;
-    let userAnswers = [];
-    let wrongLog = [];
+    const userAnswers = [];
 
     function checkAnswer() {
       const input = document.getElementById("input");
       const answer = input.value.trim().toLowerCase();
+      if (!answer) return;
+
       const correct = correctAnswers[currentIndex];
       userAnswers.push(answer);
-
       if (answer === correct) {
         score++;
-        document.getElementById("feedback").textContent = "Correct!";
-        document.getElementById("feedback").className = "correct";
+        document.getElementById("feedback").textContent = "✅ Correct!";
       } else {
-        document.getElementById("feedback").textContent = `Incorrect! Correct was: ${correct}`;
-        document.getElementById("feedback").className = "incorrect";
-        wrongLog.push({ word: correct, user: answer });
+        document.getElementById("feedback").textContent = `❌ Wrong! The correct word was: ${correct}`;
+        saveMistake(correct, answer);
       }
 
       input.value = "";
       currentIndex++;
-
       if (currentIndex >= correctAnswers.length) {
         showResults();
-      } else {
-        document.getElementById("status").textContent = `Word ${currentIndex + 1} of ${correctAnswers.length}`;
       }
     }
 
     function showResults() {
-      document.getElementById("status").textContent = `Completed! You scored ${score}/${correctAnswers.length}`;
+      document.getElementById("status").textContent =
+        `✅ Completed! You scored ${score}/${correctAnswers.length}`;
       document.getElementById("input").disabled = true;
       document.querySelector("button").disabled = true;
       document.getElementById("feedback").textContent = "";
 
-      let html = `<h3>Result Table</h3><table><tr><th>#</th><th>Correct Answer</th><th>Your Answer</th></tr>`;
+      let html = `<table><tr><th>#</th><th>Correct</th><th>Your Answer</th></tr>`;
       correctAnswers.forEach((word, i) => {
-        html += `<tr><td>${i + 1}</td><td>${word}</td><td>${userAnswers[i]}</td></tr>`;
+        const user = userAnswers[i];
+        const cls = word === user ? "correct" : "wrong";
+        html += `<tr class="${cls}"><td>${i + 1}</td><td>${word}</td><td>${user}</td></tr>`;
       });
-      html += `</table>`;
-
-      if (wrongLog.length > 0) {
-        html += `<h3>Wrong Log</h3><ul>`;
-        wrongLog.forEach(item => {
-          html += `<li><strong>${item.word}</strong> → you typed: <em>${item.user}</em></li>`;
-        });
-        html += `</ul>`;
-      }
-
+      html += "</table>";
       document.getElementById("result-list").innerHTML = html;
     }
 
-    document.getElementById("input").addEventListener("keypress", function(e) {
+    function restart() {
+      location.reload();
+    }
+
+    function saveMistake(correct, user) {
+      const record = JSON.parse(localStorage.getItem("mistakes") || "[]");
+      record.push({ correct, user });
+      localStorage.setItem("mistakes", JSON.stringify(record));
+    }
+
+    function showMistakes() {
+      const record = JSON.parse(localStorage.getItem("mistakes") || "[]");
+      if (record.length === 0) {
+        alert("🎉 No mistakes recorded yet!");
+        return;
+      }
+      const lines = record.map((item, i) => `${i + 1}. Correct: ${item.correct} | Your Answer: ${item.user}`);
+      alert("📝 Mistake History:\n\n" + lines.join("\n"));
+    }
+
+    document.getElementById("input").addEventListener("keypress", function (e) {
       if (e.key === "Enter") checkAnswer();
     });
   </script>
+
 </body>
 </html>
