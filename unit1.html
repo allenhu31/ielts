@@ -42,7 +42,7 @@ function showPrompt() {
   document.getElementById("answer").value = "";
   document.getElementById("answer").focus();
   const fb = document.getElementById("feedback");
-  fb.textContent = "";
+  fb.innerText = "";
   fb.className = "status";
 }
 
@@ -75,13 +75,13 @@ function checkInput() {
     const isCorrect = (input === correct);
     userAnswers[matchedIndex] = input;
     fb.className = "status " + (isCorrect ? "success" : "error");
-    fb.textContent = (isCorrect ? "✅ Correct! Answer: " : "❌ Wrong! Correct Answer: ") + correct;
+    fb.innerText = (isCorrect ? "✅ Correct! Answer: " : "❌ Wrong! Correct Answer: ") + correct;
     currentIndex = matchedIndex + 1;
   } else {
     const correct = words[currentIndex];
     userAnswers[currentIndex] = input;
     fb.className = "status error";
-    fb.textContent = "❌ Wrong! Correct Answer: " + correct;
+    fb.innerText = "❌ Wrong! Correct Answer: " + correct;
     currentIndex++;
   }
 
