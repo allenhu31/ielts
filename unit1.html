@@ -56,8 +56,6 @@ function checkInput() {
   const input = document.getElementById("answer").value.trim().toLowerCase();
   if (!input) return;
 
-  
-  let matched = false;
   for (let offset = 0; offset <= lookahead && (currentIndex + offset) < words.length; offset++) {
     const target = words[currentIndex + offset];
     const sim = similarity(input, target);
@@ -68,7 +66,6 @@ function checkInput() {
       document.getElementById("feedback").textContent =
         (correct ? "✅" : "❌") + " Word " + (currentIndex + offset + 1) + ": " + target;
       currentIndex = currentIndex + offset + 1;
-      matched = true;
       if (currentIndex >= words.length) { finish(); return; }
       showPrompt();
       return;
