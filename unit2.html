@@ -3,97 +3,123 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Unit 2 - Listening Practice</title>
+  <title>Unit2 Listening Practice</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
-    input { padding: 8px; font-size: 16px; }
-    button { padding: 8px 16px; margin: 10px; }
-    #result-list table { border-collapse: collapse; width: 100%; }
-    #result-list td, #result-list th { border: 1px solid #999; padding: 6px; text-align: center; }
-    .correct { background-color: #c6f6c6; }
-    .wrong { background-color: #f8c6c6; }
+    body { font-family: Arial; padding: 20px; }
+    input { padding: 8px; width: 200px; font-size: 16px; }
+    button { padding: 6px 12px; }
+    .status { margin-top: 10px; font-weight: bold; white-space: pre-line; }
+    .success { color: green; }
+    .error { color: red; }
+    details { margin: 10px 0; }
   </style>
 </head>
 <body>
 
-  <h1>Unit 2 Listening Practice</h1>
-  <p>Click play and type the word you hear:</p>
-<details><summary>📘 Show Word List</summary><ul><li>contract</li><li>crime</li><li>damage</li><li>dance</li><li>danger</li><li>depth</li><li>desk</li><li>diary</li><li>diet</li><li>donation</li><li>drive</li><li>drum</li><li>education</li><li>electronic</li><li>email</li><li>engineer</li><li>engineering</li><li>exhibition</li><li>expensive</li><li>eyes</li><li>face</li><li>flooding</li><li>fruit</li><li>game</li><li>green</li><li>heat</li><li>holiday</li><li>house</li><li>human</li><li>idea</li><li>income</li><li>information</li><li>ink</li><li>irrigation</li><li>jeans</li><li>labour</li><li>lecture</li><li>legal</li><li>location</li><li>massage</li><li>mathematics</li><li>meat</li><li>metal</li><li>microscope</li><li>middle</li><li>milk</li><li>mineral</li><li>month</li><li>movement</li><li>noisy</li><li>number</li><li>ocean</li><li>office</li><li>online</li><li>photocopy</li><li>pizza</li><li>planning</li><li>plate</li><li>playground</li><li>police</li><li>post</li><li>problem</li><li>profit</li><li>protection</li><li>purpose</li><li>rain</li><li>risk</li><li>roof</li><li>rubber</li><li>rubbish</li><li>rule</li><li>safe</li><li>salary</li><li>sand</li><li>scientist</li><li>shark</li><li>singing</li><li>software</li><li>song</li><li>storage</li><li>stress</li><li>support</li><li>taxi</li><li>teacher</li><li>top</li><li>tourism</li><li>towel</li><li>transportation</li><li>travel</li><li>washing</li><li>whale</li><li>workshop</li><li>young</li><li>accommodation</li><li>accountant</li><li>activity</li><li>advertising</li><li>africa</li><li>afternoon</li><li>agency</li><li>aging</li><li>air</li><li>airline</li><li>analysis</li><li>application</li><li>art</li><li>australian</li><li>automatic</li><li>beginner</li><li>blue</li><li>bright</li><li>candle</li><li>carbon</li><li>carpet</li><li>challenge</li><li>change</li><li>chart</li><li>chicken</li><li>closed</li><li>clothing</li><li>comedy</li><li>concert</li><li>concrete</li><li>conservation</li><li>cotton</li><li>current</li><li>customer</li><li>dancing</li><li>dark</li><li>density</li><li>dentist</li><li>discussion</li><li>dishwasher</li><li>display</li><li>diving</li><li>door</li><li>double</li><li>downhill</li><li>drama</li><li>drink</li><li>drug</li><li>economics</li><li>economy</li><li>emotion</li><li>engine</li><li>evolution</li><li>example</li><li>fashion</li><li>feather</li><li>fertiliser</li><li>fight</li><li>flavour</li><li>flood</li><li>foundation</li><li>fuel</li><li>gender</li><li>global</li><li>gold</li><li>hair</li><li>heart</li><li>honey</li><li>identification</li><li>identity</li><li>instrument</li><li>intermediate</li><li>international</li><li>jacket</li><li>joke</li><li>keyboard</li><li>label</li><li>laundry</li><li>learning</li><li>license</li><li>link</li><li>liquid</li><li>lounge</li><li>lower</li><li>machine</li><li>manual</li><li>mat</li><li>math</li><li>media</li><li>medicine</li><li>meeting</li><li>member</li><li>memory</li><li>modern</li><li>monthly</li><li>mood</li><li>morning</li><li>mud</li><li>natural</li><li>nature</li><li>neighbour</li><li>new</li><li>night</li><li>none</li><li>note</li><li>nurse</li><li>oldest</li><li>opera</li><li>outdoor</li><li>outside</li><li>oxygen</li><li>packaging</li><li>pain</li><li>paper</li><li>participation</li><li>party</li><li>password</li><li>performance</li><li>personal</li><li>pet</li><li>photography</li><li>picnic</li><li>plane</li><li>planet</li><li>politics</li><li>pollution</li><li>poster</li><li>pottery</li><li>powder</li><li>power</li><li>price</li><li>printing</li><li>privacy</li><li>private</li><li>product</li><li>promotion</li><li>pump</li><li>qualification</li><li>race</li><li>random</li><li>rat</li><li>reduction</li><li>rice</li><li>right</li><li>rope</li><li>salad</li><li>sandwich</li><li>screen</li><li>seat</li><li>second</li><li>senior</li><li>service</li><li>shell</li><li>signal</li><li>sleep</li><li>slide</li><li>small</li><li>smell</li><li>soft</li><li>sound</li><li>south</li><li>southeast</li><li>space</li><li>spring</li><li>star</li><li>summary</li><li>talent</li><li>teaching</li><li>telephone</li><li>tour</li><li>toy</li></ul></details>
-  <audio controls src="Unit2.mp3"></audio><br>
-  <input type="text" id="input" autofocus />
-  <button onclick="checkAnswer()">Submit</button>
-  <a href="index.html">🏠 Home</a>
-  <button onclick="showMistakes()">📝 View Mistakes</button>
+<h1>Unit2 Listening Practice</h1>
+<p>Click play and type the word you hear:</p>
+<details><summary>📘 Show Word List</summary><ul><li>267.0</li><li>268.0</li><li>269.0</li><li>270.0</li><li>271.0</li><li>272.0</li><li>273.0</li><li>274.0</li><li>275.0</li><li>276.0</li><li>277.0</li><li>278.0</li><li>279.0</li><li>280.0</li><li>281.0</li><li>282.0</li><li>283.0</li><li>284.0</li><li>285.0</li><li>286.0</li><li>287.0</li><li>288.0</li><li>289.0</li><li>290.0</li><li>291.0</li><li>292.0</li><li>293.0</li><li>294.0</li><li>295.0</li><li>296.0</li><li>297.0</li><li>298.0</li><li>299.0</li><li>300.0</li><li>301.0</li><li>302.0</li><li>303.0</li><li>304.0</li><li>305.0</li><li>306.0</li><li>307.0</li><li>308.0</li><li>309.0</li><li>310.0</li><li>311.0</li><li>312.0</li><li>313.0</li><li>314.0</li><li>315.0</li><li>316.0</li><li>317.0</li><li>318.0</li><li>319.0</li><li>320.0</li><li>321.0</li><li>322.0</li><li>323.0</li><li>324.0</li><li>325.0</li><li>326.0</li><li>327.0</li><li>328.0</li><li>329.0</li><li>330.0</li><li>331.0</li><li>332.0</li><li>333.0</li><li>334.0</li><li>335.0</li><li>336.0</li><li>337.0</li><li>338.0</li><li>339.0</li><li>340.0</li><li>341.0</li><li>342.0</li><li>343.0</li><li>344.0</li><li>345.0</li><li>346.0</li><li>347.0</li><li>348.0</li><li>349.0</li><li>350.0</li><li>351.0</li><li>352.0</li><li>353.0</li><li>354.0</li><li>crime</li><li>damage</li><li>dance</li><li>danger</li><li>depth</li><li>desk</li><li>diary</li><li>diet</li><li>donation</li><li>drive</li><li>drum</li><li>education</li><li>electronic</li><li>email</li><li>engineer</li><li>engineering</li><li>exhibition</li><li>expensive</li><li>eyes</li><li>face</li><li>flooding</li><li>fruit</li><li>game</li><li>green</li><li>heat</li><li>holiday</li><li>house</li><li>human</li><li>idea</li><li>income</li><li>information</li><li>ink</li><li>irrigation</li><li>jeans</li><li>labour</li><li>lecture</li><li>legal</li><li>location</li><li>massage</li><li>mathematics</li><li>meat</li><li>metal</li><li>microscope</li><li>middle</li><li>milk</li><li>mineral</li><li>month</li><li>movement</li><li>noisy</li><li>number</li><li>ocean</li><li>office</li><li>online</li><li>photocopy</li><li>pizza</li><li>planning</li><li>plate</li><li>playground</li><li>police</li><li>post</li><li>problem</li><li>profit</li><li>protection</li><li>purpose</li><li>rain</li><li>risk</li><li>roof</li><li>rubber</li><li>rubbish</li><li>rule</li><li>safe</li><li>salary</li><li>sand</li><li>scientist</li><li>shark</li><li>singing</li><li>software</li><li>song</li><li>storage</li><li>stress</li><li>support</li><li>taxi</li><li>teacher</li><li>top</li><li>tourism</li><li>towel</li><li>transportation</li><li>travel</li><li>356.0</li><li>357.0</li><li>358.0</li><li>359.0</li><li>360.0</li><li>361.0</li><li>362.0</li><li>363.0</li><li>364.0</li><li>365.0</li><li>366.0</li><li>367.0</li><li>368.0</li><li>369.0</li><li>370.0</li><li>371.0</li><li>372.0</li><li>373.0</li><li>374.0</li><li>375.0</li><li>376.0</li><li>377.0</li><li>378.0</li><li>379.0</li><li>380.0</li><li>381.0</li><li>382.0</li><li>383.0</li><li>384.0</li><li>385.0</li><li>386.0</li><li>387.0</li><li>388.0</li><li>389.0</li><li>390.0</li><li>391.0</li><li>392.0</li><li>393.0</li><li>394.0</li><li>395.0</li><li>396.0</li><li>397.0</li><li>398.0</li><li>399.0</li><li>400.0</li><li>401.0</li><li>402.0</li><li>403.0</li><li>404.0</li><li>405.0</li><li>406.0</li><li>407.0</li><li>408.0</li><li>409.0</li><li>410.0</li><li>411.0</li><li>412.0</li><li>413.0</li><li>414.0</li><li>415.0</li><li>416.0</li><li>417.0</li><li>418.0</li><li>419.0</li><li>420.0</li><li>421.0</li><li>422.0</li><li>423.0</li><li>424.0</li><li>425.0</li><li>426.0</li><li>427.0</li><li>428.0</li><li>429.0</li><li>430.0</li><li>431.0</li><li>432.0</li><li>433.0</li><li>434.0</li><li>435.0</li><li>436.0</li><li>437.0</li><li>438.0</li><li>439.0</li><li>440.0</li><li>441.0</li><li>442.0</li><li>443.0</li><li>whale</li><li>workshop</li><li>young</li><li>accommodation</li><li>accountant</li><li>activity</li><li>advertising</li><li>Africa</li><li>afternoon</li><li>agency</li><li>aging</li><li>air</li><li>airline</li><li>analysis</li><li>application</li><li>art</li><li>Australian</li><li>automatic</li><li>beginner</li><li>blue</li><li>bright</li><li>candle</li><li>carbon</li><li>carpet</li><li>challenge</li><li>change</li><li>chart</li><li>chicken</li><li>closed</li><li>clothing</li><li>comedy</li><li>concert</li><li>concrete</li><li>conservation</li><li>cotton</li><li>current</li><li>customer</li><li>dancing</li><li>dark</li><li>density</li><li>dentist</li><li>discussion</li><li>dishwasher</li><li>display</li><li>diving</li><li>door</li><li>double</li><li>downhill</li><li>drama</li><li>drink</li><li>drug</li><li>economics</li><li>economy</li><li>emotion</li><li>engine</li><li>evolution</li><li>example</li><li>fashion</li><li>feather</li><li>fertiliser</li><li>fight</li><li>flavour</li><li>flood</li><li>foundation</li><li>fuel</li><li>gender</li><li>global</li><li>gold</li><li>hair</li><li>heart</li><li>honey</li><li>identification</li><li>identity</li><li>instrument</li><li>intermediate</li><li>international</li><li>jacket</li><li>joke</li><li>keyboard</li><li>label</li><li>laundry</li><li>learning</li><li>license</li><li>link</li><li>liquid</li><li>lounge</li><li>lower</li><li>machine</li><li>445.0</li><li>446.0</li><li>447.0</li><li>448.0</li><li>449.0</li><li>450.0</li><li>451.0</li><li>452.0</li><li>453.0</li><li>454.0</li><li>455.0</li><li>456.0</li><li>457.0</li><li>458.0</li><li>459.0</li><li>460.0</li><li>461.0</li><li>462.0</li><li>463.0</li><li>464.0</li><li>465.0</li><li>466.0</li><li>467.0</li><li>468.0</li><li>469.0</li><li>470.0</li><li>471.0</li><li>472.0</li><li>473.0</li><li>474.0</li><li>475.0</li><li>476.0</li><li>477.0</li><li>478.0</li><li>479.0</li><li>480.0</li><li>481.0</li><li>482.0</li><li>483.0</li><li>484.0</li><li>485.0</li><li>486.0</li><li>487.0</li><li>488.0</li><li>489.0</li><li>490.0</li><li>491.0</li><li>492.0</li><li>493.0</li><li>494.0</li><li>495.0</li><li>496.0</li><li>497.0</li><li>498.0</li><li>499.0</li><li>500.0</li><li>501.0</li><li>502.0</li><li>503.0</li><li>504.0</li><li>505.0</li><li>506.0</li><li>507.0</li><li>508.0</li><li>509.0</li><li>510.0</li><li>511.0</li><li>512.0</li><li>513.0</li><li>514.0</li><li>515.0</li><li>516.0</li><li>517.0</li><li>518.0</li><li>519.0</li><li>520.0</li><li>521.0</li><li>522.0</li><li>523.0</li><li>524.0</li><li>525.0</li><li>526.0</li><li>527.0</li><li>528.0</li><li>529.0</li><li>530.0</li><li>mat</li><li>math</li><li>media</li><li>medicine</li><li>meeting</li><li>member</li><li>memory</li><li>modern</li><li>monthly</li><li>mood</li><li>morning</li><li>mud</li><li>natural</li><li>nature</li><li>neighbour</li><li>new</li><li>night</li><li>none</li><li>note</li><li>nurse</li><li>oldest</li><li>opera</li><li>outdoor</li><li>outside</li><li>oxygen</li><li>packaging</li><li>pain</li><li>paper</li><li>participation</li><li>part-time</li><li>party</li><li>password</li><li>performance</li><li>personal</li><li>pet</li><li>photography</li><li>picnic</li><li>plane</li><li>planet</li><li>politics</li><li>pollution</li><li>poster</li><li>pottery</li><li>powder</li><li>power</li><li>price</li><li>printing</li><li>privacy</li><li>private</li><li>product</li><li>promotion</li><li>pump</li><li>qualification</li><li>race</li><li>random</li><li>rat</li><li>reduction</li><li>rice</li><li>right</li><li>rope</li><li>salad</li><li>sandwich</li><li>screen</li><li>seat</li><li>second</li><li>senior</li><li>service</li><li>shell</li><li>signal</li><li>sleep</li><li>slide</li><li>small</li><li>smell</li><li>soft</li><li>sound</li><li>south</li><li>southeast</li><li>space</li><li>spring</li><li>star</li><li>summary</li><li>talent</li><li>teaching</li><li>telephone</li><li>tour</li><li>toy</li></ul>
+<li>water</li><li>garden</li><li>insurance</li><li>bird</li><li>transport</li><li>glass</li><li>park</li><li>interview</li><li>light</li><li>station</li><li>city</li><li>forest</li><li>school</li><li>balcony</li><li>family</li><li>garage</li><li>map</li><li>museum</li><li>river</li><li>time</li><li>training</li><li>children</li><li>kitchen</li><li>magazine</li><li>wood</li><li>bone</li><li>bridge</li><li>flower</li><li>internet</li><li>library</li><li>parking</li><li>photo</li><li>supermarket</li><li>temperature</li><li>website</li><li>electricity</li><li>government</li><li>plastic</li><li>safety</li><li>stone</li><li>beach</li><li>fire</li><li>fish</li><li>fishing</li><li>helicopter</li><li>insect</li><li>music</li><li>newspaper</li><li>radio</li><li>reference</li><li>soil</li><li>wind</li><li>airport</li><li>bank</li><li>bike</li><li>business</li><li>cinema</li><li>climate</li><li>desert</li><li>energy</li><li>factory</li><li>farm</li><li>feedback</li><li>furniture</li><li>money</li><li>noise</li><li>reception</li><li>salt</li><li>theatre</li><li>boat</li><li>certificate</li><li>clean</li><li>club</li><li>colour</li><li>communication</li><li>computer</li><li>disease</li><li>environment</li><li>farming</li><li>golf</li><li>grass</li><li>gym</li><li>hospital</li><li>lake</li><li>manager</li><li>market</li><li>material</li><li>mountain</li><li>name</li><li>photograph</li><li>piano</li><li>plant</li><li>population</li><li>presentation</li><li>research</li><li>rock</li><li>sea</li><li>shower</li><li>social</li><li>sport</li><li>storm</li><li>tennis</li><li>tutor</li><li>weight</li><li>age</li><li>animal</li><li>bicycle</li><li>camera</li><li>chemical</li><li>cleaning</li><li>coffee</li><li>confidence</li><li>egg</li><li>entertainment</li><li>film</li><li>food</li><li>helmet</li><li>hotel</li><li>india</li><li>nut</li><li>phone</li><li>report</li><li>restaurant</li><li>sailing</li><li>security</li><li>size</li><li>skill</li><li>speed</li><li>studio</li><li>tax</li><li>technology</li><li>traditional</li><li>train</li><li>video</li><li>village</li><li>weather</li><li>behaviour</li><li>cake</li><li>car</li><li>chocolate</li><li>competition</li><li>cooking</li><li>culture</li><li>decoration</li><li>distance</li><li>equipment</li><li>flat</li><li>flexible</li><li>fridge</li><li>gas</li><li>genetic</li><li>gift</li><li>group</li><li>language</li><li>locker</li><li>microwave</li><li>north</li><li>oil</li><li>passport</li><li>picture</li><li>reading</li><li>resource</li><li>road</li><li>student</li><li>swimming</li><li>teenager</li><li>traffic</li><li>academic</li><li>agriculture</li><li>apartment</li><li>back</li><li>basement</li><li>book</li><li>booklet</li><li>box</li><li>breakfast</li><li>bus</li><li>cheese</li><li>cheque</li><li>clay</li><li>clothes</li><li>coast</li><li>concentration</li><li>corn</li><li>cost</li><li>deposit</li><li>direction</li><li>discount</li><li>dry</li><li>exercise</li><li>fear</li><li>friend</li><li>guide</li><li>health</li><li>history</li><li>housing</li><li>hunting</li><li>image</li><li>japanese</li><li>job</li><li>lunch</li><li>meal</li><li>method</li><li>mirror</li><li>negative</li><li>nutrition</li><li>observation</li><li>open</li><li>organic</li><li>painting</li><li>parent</li><li>permit</li><li>pool</li><li>public</li><li>quality</li><li>question</li><li>rainfall</li><li>record</li><li>relationship</li><li>sale</li><li>sample</li><li>science</li><li>seafood</li><li>seminar</li><li>silver</li><li>spanish</li><li>standard</li><li>store</li><li>street</li><li>sugar</li><li>summer</li><li>sun</li><li>survey</li><li>team</li><li>tent</li><li>ticket</li><li>tool</li><li>tree</li><li>university</li><li>view</li><li>weekend</li><li>wheelchair</li><li>window</li><li>winter</li><li>women</li><li>action</li><li>adult</li><li>advertisement</li><li>alarm</li><li>bacteria</li><li>bag</li><li>band</li><li>bathroom</li><li>brick</li><li>building</li><li>camel</li><li>cash</li><li>castle</li><li>cave</li><li>central</li><li>coach</li><li>college</li><li>commercial</li><li>conference</li>
+</ul></details>
 
-  <p id="status"></p>
-  <p id="feedback"></p>
+<audio controls src="Unit2.mp3"></audio><br><br>
 
-  <div id="result-list"></div>
+<p><b id="prompt">Word 1 of 264</b></p>
+<input id="answer" placeholder="Type your answer" autofocus />
+<button onclick="checkInput()">Submit</button>
+<a href="index.html">🏠 Home</a>
+<button onclick="showMistakes()">📄 View Mistakes</button>
+<p id="feedback" class="status"></p>
 
-  <script>
-    const correctAnswers = ['contract', 'crime', 'damage', 'dance', 'danger', 'depth', 'desk', 'diary', 'diet', 'donation', 'drive', 'drum', 'education', 'electronic', 'email', 'engineer', 'engineering', 'exhibition', 'expensive', 'eyes', 'face', 'flooding', 'fruit', 'game', 'green', 'heat', 'holiday', 'house', 'human', 'idea', 'income', 'information', 'ink', 'irrigation', 'jeans', 'labour', 'lecture', 'legal', 'location', 'massage', 'mathematics', 'meat', 'metal', 'microscope', 'middle', 'milk', 'mineral', 'month', 'movement', 'noisy', 'number', 'ocean', 'office', 'online', 'photocopy', 'pizza', 'planning', 'plate', 'playground', 'police', 'post', 'problem', 'profit', 'protection', 'purpose', 'rain', 'risk', 'roof', 'rubber', 'rubbish', 'rule', 'safe', 'salary', 'sand', 'scientist', 'shark', 'singing', 'software', 'song', 'storage', 'stress', 'support', 'taxi', 'teacher', 'top', 'tourism', 'towel', 'transportation', 'travel', 'washing', 'whale', 'workshop', 'young', 'accommodation', 'accountant', 'activity', 'advertising', 'africa', 'afternoon', 'agency', 'aging', 'air', 'airline', 'analysis', 'application', 'art', 'australian', 'automatic', 'beginner', 'blue', 'bright', 'candle', 'carbon', 'carpet', 'challenge', 'change', 'chart', 'chicken', 'closed', 'clothing', 'comedy', 'concert', 'concrete', 'conservation', 'cotton', 'current', 'customer', 'dancing', 'dark', 'density', 'dentist', 'discussion', 'dishwasher', 'display', 'diving', 'door', 'double', 'downhill', 'drama', 'drink', 'drug', 'economics', 'economy', 'emotion', 'engine', 'evolution', 'example', 'fashion', 'feather', 'fertiliser', 'fight', 'flavour', 'flood', 'foundation', 'fuel', 'gender', 'global', 'gold', 'hair', 'heart', 'honey', 'identification', 'identity', 'instrument', 'intermediate', 'international', 'jacket', 'joke', 'keyboard', 'label', 'laundry', 'learning', 'license', 'link', 'liquid', 'lounge', 'lower', 'machine', 'manual', 'mat', 'math', 'media', 'medicine', 'meeting', 'member', 'memory', 'modern', 'monthly', 'mood', 'morning', 'mud', 'natural', 'nature', 'neighbour', 'new', 'night', 'none', 'note', 'nurse', 'oldest', 'opera', 'outdoor', 'outside', 'oxygen', 'packaging', 'pain', 'paper', 'participation', 'party', 'password', 'performance', 'personal', 'pet', 'photography', 'picnic', 'plane', 'planet', 'politics', 'pollution', 'poster', 'pottery', 'powder', 'power', 'price', 'printing', 'privacy', 'private', 'product', 'promotion', 'pump', 'qualification', 'race', 'random', 'rat', 'reduction', 'rice', 'right', 'rope', 'salad', 'sandwich', 'screen', 'seat', 'second', 'senior', 'service', 'shell', 'signal', 'sleep', 'slide', 'small', 'smell', 'soft', 'sound', 'south', 'southeast', 'space', 'spring', 'star', 'summary', 'talent', 'teaching', 'telephone', 'tour', 'toy'];
-    let currentIndex = 0;
-    let score = 0;
-    const userAnswers = [];
+<script>
+const words = ["267.0", "268.0", "269.0", "270.0", "271.0", "272.0", "273.0", "274.0", "275.0", "276.0", "277.0", "278.0", "279.0", "280.0", "281.0", "282.0", "283.0", "284.0", "285.0", "286.0", "287.0", "288.0", "289.0", "290.0", "291.0", "292.0", "293.0", "294.0", "295.0", "296.0", "297.0", "298.0", "299.0", "300.0", "301.0", "302.0", "303.0", "304.0", "305.0", "306.0", "307.0", "308.0", "309.0", "310.0", "311.0", "312.0", "313.0", "314.0", "315.0", "316.0", "317.0", "318.0", "319.0", "320.0", "321.0", "322.0", "323.0", "324.0", "325.0", "326.0", "327.0", "328.0", "329.0", "330.0", "331.0", "332.0", "333.0", "334.0", "335.0", "336.0", "337.0", "338.0", "339.0", "340.0", "341.0", "342.0", "343.0", "344.0", "345.0", "346.0", "347.0", "348.0", "349.0", "350.0", "351.0", "352.0", "353.0", "354.0", "crime", "damage", "dance", "danger", "depth", "desk", "diary", "diet", "donation", "drive", "drum", "education", "electronic", "email", "engineer", "engineering", "exhibition", "expensive", "eyes", "face", "flooding", "fruit", "game", "green", "heat", "holiday", "house", "human", "idea", "income", "information", "ink", "irrigation", "jeans", "labour", "lecture", "legal", "location", "massage", "mathematics", "meat", "metal", "microscope", "middle", "milk", "mineral", "month", "movement", "noisy", "number", "ocean", "office", "online", "photocopy", "pizza", "planning", "plate", "playground", "police", "post", "problem", "profit", "protection", "purpose", "rain", "risk", "roof", "rubber", "rubbish", "rule", "safe", "salary", "sand", "scientist", "shark", "singing", "software", "song", "storage", "stress", "support", "taxi", "teacher", "top", "tourism", "towel", "transportation", "travel", "356.0", "357.0", "358.0", "359.0", "360.0", "361.0", "362.0", "363.0", "364.0", "365.0", "366.0", "367.0", "368.0", "369.0", "370.0", "371.0", "372.0", "373.0", "374.0", "375.0", "376.0", "377.0", "378.0", "379.0", "380.0", "381.0", "382.0", "383.0", "384.0", "385.0", "386.0", "387.0", "388.0", "389.0", "390.0", "391.0", "392.0", "393.0", "394.0", "395.0", "396.0", "397.0", "398.0", "399.0", "400.0", "401.0", "402.0", "403.0", "404.0", "405.0", "406.0", "407.0", "408.0", "409.0", "410.0", "411.0", "412.0", "413.0", "414.0", "415.0", "416.0", "417.0", "418.0", "419.0", "420.0", "421.0", "422.0", "423.0", "424.0", "425.0", "426.0", "427.0", "428.0", "429.0", "430.0", "431.0", "432.0", "433.0", "434.0", "435.0", "436.0", "437.0", "438.0", "439.0", "440.0", "441.0", "442.0", "443.0", "whale", "workshop", "young", "accommodation", "accountant", "activity", "advertising", "Africa", "afternoon", "agency", "aging", "air", "airline", "analysis", "application", "art", "Australian", "automatic", "beginner", "blue", "bright", "candle", "carbon", "carpet", "challenge", "change", "chart", "chicken", "closed", "clothing", "comedy", "concert", "concrete", "conservation", "cotton", "current", "customer", "dancing", "dark", "density", "dentist", "discussion", "dishwasher", "display", "diving", "door", "double", "downhill", "drama", "drink", "drug", "economics", "economy", "emotion", "engine", "evolution", "example", "fashion", "feather", "fertiliser", "fight", "flavour", "flood", "foundation", "fuel", "gender", "global", "gold", "hair", "heart", "honey", "identification", "identity", "instrument", "intermediate", "international", "jacket", "joke", "keyboard", "label", "laundry", "learning", "license", "link", "liquid", "lounge", "lower", "machine", "445.0", "446.0", "447.0", "448.0", "449.0", "450.0", "451.0", "452.0", "453.0", "454.0", "455.0", "456.0", "457.0", "458.0", "459.0", "460.0", "461.0", "462.0", "463.0", "464.0", "465.0", "466.0", "467.0", "468.0", "469.0", "470.0", "471.0", "472.0", "473.0", "474.0", "475.0", "476.0", "477.0", "478.0", "479.0", "480.0", "481.0", "482.0", "483.0", "484.0", "485.0", "486.0", "487.0", "488.0", "489.0", "490.0", "491.0", "492.0", "493.0", "494.0", "495.0", "496.0", "497.0", "498.0", "499.0", "500.0", "501.0", "502.0", "503.0", "504.0", "505.0", "506.0", "507.0", "508.0", "509.0", "510.0", "511.0", "512.0", "513.0", "514.0", "515.0", "516.0", "517.0", "518.0", "519.0", "520.0", "521.0", "522.0", "523.0", "524.0", "525.0", "526.0", "527.0", "528.0", "529.0", "530.0", "mat", "math", "media", "medicine", "meeting", "member", "memory", "modern", "monthly", "mood", "morning", "mud", "natural", "nature", "neighbour", "new", "night", "none", "note", "nurse", "oldest", "opera", "outdoor", "outside", "oxygen", "packaging", "pain", "paper", "participation", "part-time", "party", "password", "performance", "personal", "pet", "photography", "picnic", "plane", "planet", "politics", "pollution", "poster", "pottery", "powder", "power", "price", "printing", "privacy", "private", "product", "promotion", "pump", "qualification", "race", "random", "rat", "reduction", "rice", "right", "rope", "salad", "sandwich", "screen", "seat", "second", "senior", "service", "shell", "signal", "sleep", "slide", "small", "smell", "soft", "sound", "south", "southeast", "space", "spring", "star", "summary", "talent", "teaching", "telephone", "tour", "toy"]
+let currentIndex = 0;
+let userAnswers = new Array(words.length).fill("");
+const lookahead = 3;
 
-    function checkAnswer() {
-      const input = document.getElementById("input");
-      const answer = input.value.trim().toLowerCase();
-      if (!answer) return;
+function showPrompt() {
+  document.getElementById("prompt").textContent = "Word " + (currentIndex + 1) + " of " + words.length;
+  document.getElementById("answer").value = "";
+  document.getElementById("answer").focus();
+  const fb = document.getElementById("feedback");
+  fb.innerText = "";
+  fb.className = "status";
+}
 
-      const correct = correctAnswers[currentIndex];
-      userAnswers.push(answer);
-      if (answer === correct) {
-        score++;
-        document.getElementById("feedback").textContent = `✅ Correct! Answer: ${correct}`;
-      } else {
-        document.getElementById("feedback").textContent = `❌ Wrong! Correct Answer: ${correct}`;
-        saveMistake(correct, answer);
-      }
+function similarity(a, b) {
+  let matches = 0;
+  const len = Math.min(a.length, b.length);
+  for (let i = 0; i < len; i++) {
+    if (a[i] === b[i]) matches++;
+  }
+  return matches / Math.max(a.length, b.length);
+}
 
-      input.value = "";
-      currentIndex++;
-      if (currentIndex >= correctAnswers.length) {
-        showResults();
-      }
+function checkInput() {
+  const input = document.getElementById("answer").value.trim().toLowerCase();
+  if (!input) return;
+
+  const fb = document.getElementById("feedback");
+  let matchedIndex = -1;
+
+  for (let offset = 0; offset <= lookahead && (currentIndex + offset) < words.length; offset++) {
+    const target = words[currentIndex + offset];
+    if (similarity(input, target) > 0.7) {
+      matchedIndex = currentIndex + offset;
+      break;
     }
+  }
 
-    function showResults() {
-      document.getElementById("status").textContent =
-        `✅ Completed! You scored ${score}/${correctAnswers.length}`;
-      document.getElementById("input").disabled = true;
-      document.querySelector("button").disabled = true;
-      document.getElementById("feedback").textContent = "";
+  let isCorrect = false;
+  let matchedWord = "";
+  let feedbackText = "";
 
-      let html = `<table><tr><th>#</th><th>Correct</th><th>Your Answer</th></tr>`;
-      correctAnswers.forEach((word, i) => {
-        const user = userAnswers[i];
-        const cls = word === user ? "correct" : "wrong";
-        html += `<tr class="${cls}"><td>${i + 1}</td><td>${word}</td><td>${user}</td></tr>`;
-      });
-      html += "</table>";
-      document.getElementById("result-list").innerHTML = html;
+  if (matchedIndex !== -1) {
+    matchedWord = words[matchedIndex];
+    isCorrect = input === matchedWord;
+    userAnswers[matchedIndex] = input;
+    feedbackText = `You entered: ${input}\nMatched with Word ${matchedIndex + 1}: ${matchedWord}\nCorrect Answer: ${matchedWord}\n` + (isCorrect ? "✅ Correct!" : "❌ Incorrect!");
+    fb.className = "status " + (isCorrect ? "success" : "error");
+    currentIndex = matchedIndex + 1;
+  } else {
+    matchedWord = words[currentIndex];
+    isCorrect = false;
+    userAnswers[currentIndex] = input;
+    feedbackText = `You entered: ${input}\nMatched with Word ${currentIndex + 1}: ${matchedWord}\nCorrect Answer: ${matchedWord}\n❌ Incorrect!`;
+    fb.className = "status error";
+    currentIndex++;
+  }
+
+  fb.innerText = feedbackText;
+
+  if (currentIndex >= words.length) { finish(); return; }
+  showPrompt();
+}
+
+function finish() {
+  let correct = 0;
+  for (let i = 0; i < words.length; i++) {
+    if (userAnswers[i] === words[i]) correct++;
+  }
+  alert("🎉 Done! Score: " + correct + "/" + words.length);
+}
+
+function showMistakes() {
+  let text = "Mistakes:\n\n";
+  for (let i = 0; i < words.length; i++) {
+    if (userAnswers[i] && userAnswers[i] !== words[i]) {
+      text += (i+1) + ". Correct: " + words[i] + " | Your: " + userAnswers[i] + "\n";
     }
+  }
+  alert(text || "No mistakes 🎉");
+}
 
-    function restart() { location.reload(); }
-    function saveMistake(correct, user) {
-      const record = JSON.parse(localStorage.getItem("mistakes_unit2") || "[]");
-      record.push({ correct, user });
-      localStorage.setItem("mistakes_unit2", JSON.stringify(record));
-    }
-    function showMistakes() {
-      const record = JSON.parse(localStorage.getItem("mistakes_unit2") || "[]");
-      if (record.length === 0) {
-        alert("🎉 No mistakes recorded yet!");
-        return;
-      }
-      const lines = record.map((item, i) => `${i + 1}. Correct: ${item.correct} | Your Answer: ${item.user}`);
-      alert("📝 Mistake History:\n\n" + lines.join("\n"));
-    }
+document.getElementById("answer").addEventListener("keypress", function(e) {
+  if (e.key === "Enter") checkInput();
+});
 
-    document.getElementById("input").addEventListener("keypress", function (e) {
-      if (e.key === "Enter") checkAnswer();
-    });
-  </script>
+showPrompt();
+</script>
+
 </body>
 </html>
